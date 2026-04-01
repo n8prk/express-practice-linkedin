@@ -22,6 +22,12 @@ app.get('/', (request, response) => {
     response.json(data);
 }); 
 
+// GET with Routing Parameters
+
+app.get('/class/:id', (request, response) => {
+    console.log(request.params);
+});
+
 // POST
 
 app.post('/create', (request, response) => {
@@ -47,6 +53,6 @@ app.delete('/delete', (request, response) => {
  */
 app.listen(PORT, () => {
     console.log(`The server is running on port:${PORT}`)
-    console.log(data);
+    // console.log(data);
 });
 
