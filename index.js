@@ -9,11 +9,11 @@ const app = express();
 
 const PORT = 3000;
 
-// GET HTTP Request
+// GET HTTP Request, request sometimes REQ and response sometimes RES
 
 app.get('/', (request, response) => {
-    response.send('This is a GET request at /')
-}); // REQUEST sometimes REQ, RESPONSE sometimes RES
+    response.json(data);
+}); 
 
 // POST
 
