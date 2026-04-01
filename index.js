@@ -6,8 +6,11 @@ import express from "express";
 import data from './data/mock.json' with { type: 'json' }; // Data generated from mockaroo.com
 
 const app = express();
-
 const PORT = 3000;
+
+// Using the public folder at the root of the project
+
+app.use(express.static("public"));
 
 // GET HTTP Request, request sometimes REQ and response sometimes RES
 
