@@ -12,6 +12,10 @@ const PORT = 3000;
 
 app.use(express.static("public"));
 
+// Using the images at the route /images
+
+app.use('/images', express.static('images'))
+
 // GET HTTP Request, request sometimes REQ and response sometimes RES
 
 app.get('/', (request, response) => {
