@@ -25,7 +25,12 @@ app.get('/', (request, response) => {
 // GET with Routing Parameters
 
 app.get('/class/:id', (request, response) => {
-    console.log(request.params);
+    const studentId = Number(request.params.id);
+
+     // Implicitly returns student if the id returns the requested id matches the one in the array
+    const student = data.filter((student) => student.id === studentId);
+
+    response.send(student);
 });
 
 // POST
