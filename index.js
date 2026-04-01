@@ -13,10 +13,20 @@ app.use(express.static("public"));
 // Using the images at the route /images
 app.use('/images', express.static('images'))
 
+// Using express.json and express.urlencoded
+app.use(express.json());
+
+
 // GET HTTP Request, request sometimes REQ and response sometimes RES
 app.get('/', (request, response) => {
     response.json(data);
 }); 
+
+// POST with express.json and express.urlencoded
+app.post('/item', (request, response) => {
+    console.log(request.body);
+    response.send(request.body);
+});
 
 // GET with download method
 app.get('/download', (request, response) => {
