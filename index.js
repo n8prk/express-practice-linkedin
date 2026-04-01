@@ -26,7 +26,33 @@ app.get('/download', (request, response) => {
 // GET with redirect method
 app.get('/redirect', (request, response) => {
     response.redirect('http://www.linkedin.com');
+})
+
+// Switches what you do with /class when sending different HTTP requests
+
+app.route('/class').get((req, res) => {
+    res.send('Retrieve class info');
+}).post((req, res) => {
+    res.send('Create class info');
+}).put((req, res) => {
+    res.send('Update class info');
 });
+
+// Route chaining
+// GET
+// app.get('/class', (req, res) => {
+//     res.send('Retrieve class info');
+// });
+
+// POST
+// app.post('/class', (req, res) => {
+//     res.send('Create class info');
+// });
+
+// PUT
+// app.put('/class', (req, res) => {
+//     res.send('Update class info');
+// });
 
 // GET with next()
 app.get('/next', (request, response, next) => {
