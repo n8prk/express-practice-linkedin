@@ -1,7 +1,6 @@
 /**
  *  With nodemon, when a change is detected, the port automatically restarts
  */
-
 import express from "express";
 import data from './data/mock.json' with { type: 'json' }; // Data generated from mockaroo.com
 
@@ -9,21 +8,27 @@ const app = express();
 const PORT = 3000;
 
 // Using the public folder at the root of the project
-
 app.use(express.static("public"));
 
 // Using the images at the route /images
-
 app.use('/images', express.static('images'))
 
 // GET HTTP Request, request sometimes REQ and response sometimes RES
-
 app.get('/', (request, response) => {
     response.json(data);
 }); 
 
-// GET with next()
+// GET with download method
+app.get('/download', (request, response) => {
+    response.download("images/hundred.jpg")
+});
 
+// GET with redirect method
+app.get('/redirect', (request, response) => {
+    response.redirect('http://www.linkedin.com');
+});
+
+// GET with next()
 app.get('/next', (request, response, next) => {
     console.log("The response will be sent by the next function.");
     next();
@@ -32,7 +37,6 @@ app.get('/next', (request, response, next) => {
 });
 
 // GET with Routing Parameters
-
 app.get('/class/:id', (request, response) => {
     const studentId = Number(request.params.id);
 
@@ -43,19 +47,16 @@ app.get('/class/:id', (request, response) => {
 });
 
 // POST
-
 app.post('/create', (request, response) => {
     response.send('This is a POST request at /create')
 });
 
 // PUT
-
 app.put('/edit', (request, response) => {
     response.send('This is a PUT request at /edit')
 });
 
 // DELETE
-
 app.delete('/delete', (request, response) => {
     response.send('This is a DELETE request at /delete')
 });
